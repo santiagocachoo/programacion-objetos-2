@@ -21,6 +21,18 @@ private:
 public:
     Miembro(string nombre, int edad, string tipoMembresia, bool activo);
     
+    // getters
+    string getNombre();
+    int getEdad();
+    string getTipoMembresia();
+    bool getActivo();
+    
+    // setters
+    void setNombre(string);
+    void setEdad(int);
+    void setTipoMembresia(string);
+    void setActivo(bool);
+    
     // metodos
     void mostrarInformacion();
     void cambiarEstadoMembresia(bool nuevoEstado);

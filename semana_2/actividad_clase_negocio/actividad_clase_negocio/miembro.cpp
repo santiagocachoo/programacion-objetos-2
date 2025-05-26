@@ -15,6 +15,40 @@ Miembro::Miembro(string nombre, int edad, string tipoMembresia, bool activo) {
     this->activo = activo;
 }
 
+// setters
+string Miembro::getNombre() {
+    return nombre;
+}
+
+int Miembro::getEdad() {
+    return edad;
+}
+
+string Miembro::getTipoMembresia() {
+    return tipoMembresia;
+}
+
+bool Miembro::getActivo() {
+    return activo;
+}
+
+// setters
+void Miembro::setNombre(string nombre) {
+    this->nombre = nombre;
+}
+
+void Miembro::setEdad(int edad) {
+    this->edad = edad;
+}
+
+void Miembro::setTipoMembresia(string tipoMembresia) {
+    this->tipoMembresia = tipoMembresia;
+}
+
+void Miembro::setActivo(bool activo) {
+    this->activo = activo;
+}
+
 void Miembro::mostrarInformacion() {
     cout<<"Nombre: "<<nombre<<endl;
     cout<<"Edad: "<<edad<<endl;
@@ -33,3 +67,4 @@ void Miembro::cambiarTipoMembresia(string nuevoTipo) {
 bool Miembro::estaActivo() {
     return activo;
 }
+
