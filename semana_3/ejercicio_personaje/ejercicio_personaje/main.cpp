@@ -40,11 +40,11 @@ public:
     }
     
     // getters
-    string getNombre() {
+    string getNombre() const {
         return nombre;
     }
     
-    int getEdad() {
+    int getEdad() const {
         return edad;
     }
     
@@ -62,6 +62,15 @@ public:
     void mostrarInformacion() {
         cout<<"Nombre: "<<nombre<<", Edad: "<<edad<<endl;;
     }
+    
+    // metodo y destructor virtual
+    virtual void accionEspecial() const {
+        cout<<nombre<<" realiza una acción especial"<<endl;
+    }
+    
+    virtual ~Personaje() {
+        cout<<"Destruyendo personaje: "<<nombre<<endl;
+    }
 };
 
 class Heroe : public Personaje {
@@ -78,7 +87,7 @@ public:
         cout<<"Soy "<<getNombre()<<", un heroe con el poder de "<<poderEspecial<<endl;
     }
     
-    // getter y setter de poder especiañ
+    // getter y setter de poder especial
     string getPoderEspecial() {
         return poderEspecial;
     }
@@ -86,28 +95,66 @@ public:
     void setPoderEspecial(string poderEspecial) {
         this->poderEspecial = poderEspecial;
     }
+    
+    void accionEspecial() const override {
+        cout<<getNombre()<<" usa su poder especial: "<<poderEspecial<<"!"<<endl;
+    }
+    
+    ~Heroe() {
+        cout<<"Destruyendo heroe: "<<getNombre()<<endl;
+    }
 };
+
+class Villano : public Personaje {
+private:
+    string planMalvado;
+    
+public:
+    Villano(string nombre, int edad, string planMalvado) : Personaje(nombre, edad) {
+        this->planMalvado = planMalvado;
+    }
+    
+    void accionEspecial() const override{
+        cout<<getNombre()<<" ejecuta su plan malvado: "<<planMalvado<<"!"<<endl;
+    }
+    
+    ~Villano() {
+        cout<<"Destruyendo villano: "<<getNombre()<<endl;
+    }
+};
+
 
 int main() {
     // crear objetos con diferentes constructores
-    Personaje personajeSinNada;
-    Personaje personajeCompleto("Oscar", 40);
-    Personaje personajeConNombre("Pepe");
-    Personaje personajeConEdad(22);
+    /*
+     Personaje personajeSinNada;
+     Personaje personajeCompleto("Oscar", 40);
+     Personaje personajeConNombre("Pepe");
+     Personaje personajeConEdad(22);
+     
+     personajeSinNada.mostrarInformacion();
+     personajeCompleto.mostrarInformacion();
+     personajeConNombre.mostrarInformacion();
+     personajeConEdad.mostrarInformacion();
+     
+     // HEROES
+     Heroe ironman("Iron Man", 42, "tener dinero");
+     Heroe batman("Batman", 40, "tener mucho dinero");
+     Heroe drStrange("Dr. Strange", 45, "magia");
+     Heroe flash("Flash", 19, "supervelocidad");
+     
+     batman.setPoderEspecial("ser huerfano");
+     cout<<"El poder de "<<batman.getNombre()<<" es: "<<batman.getPoderEspecial()<<endl;
+     */
     
-    personajeSinNada.mostrarInformacion();
-    personajeCompleto.mostrarInformacion();
-    personajeConNombre.mostrarInformacion();
-    personajeConEdad.mostrarInformacion();
+    Personaje *p1 = new Heroe("Mario", 30, "volar");
+    Personaje *p2 = new Villano("Vector", 22, "robar la luna");
     
-    // HEROES
-    Heroe ironman("Iron Man", 42, "tener dinero");
-    Heroe batman("Batman", 40, "tener mucho dinero");
-    Heroe drStrange("Dr. Strange", 45, "magia");
-    Heroe flash("Flash", 19, "supervelocidad");
+    p1->accionEspecial();
+    p2->accionEspecial();
     
-    batman.setPoderEspecial("ser huerfano");
-    cout<<"El poder de "<<batman.getNombre()<<" es: "<<batman.getPoderEspecial()<<endl;
+    delete p1;
+    delete p2;
     
     return 0;
 }
