@@ -1,0 +1,5 @@
+Nombre completo: Giancarlo
+Edad: 20
+Carrera: Beisbol
+Estudia actualmente: no
+Clase: Estudiante de Preparatoria
